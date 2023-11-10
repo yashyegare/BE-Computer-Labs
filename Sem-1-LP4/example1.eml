@@ -1,0 +1,443 @@
+Delivered-To: yash.yegare0810@gmail.com
+Received: by 2002:a59:b786:0:b0:3f1:793e:3d8d with SMTP id t6csp146916vqh;
+        Wed, 25 Oct 2023 12:02:39 -0700 (PDT)
+X-Received: by 2002:a05:6808:17a6:b0:3a7:6b1c:8142 with SMTP id bg38-20020a05680817a600b003a76b1c8142mr19502838oib.25.1698260559668;
+        Wed, 25 Oct 2023 12:02:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698260559; cv=none;
+        d=google.com; s=arc-20160816;
+        b=JncvievBqb7wmOOOficsQophgq1y4e49MAyT82IXspFZYB+nguxUpPAs1DYiOKtJGA
+         5Q1y1EOKzLKw2hfcYyNsQUEehKqkDXz80qA0k63SpVjhSLMY553pl6YhuyXModxqe3/n
+         rJvmr1qtg0ewtBS+aWq4xQWUL/z/sOj55ZLfETrVNlCn4pdFmW9fHoHuJ/VuUo/joyS3
+         bg7wH0smupUGb7Tsfur3UrSArBK+9Ms6Tg0CE6AEq/HhRyc1B7IErQH5u38CBABT3cq2
+         76MB+d7lpacRWN7qtyhZikLfw/vQpqJ5X3pDyAErbieMK9ZcTVzH40W6F6iqq0fW+ygG
+         /gMA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:message-id:reply-to:date:mime-version
+         :dkim-signature;
+        bh=D/qdjVmgk7xZKRFrcVyIyoSYp30LlpXV9BqrJfzUsfQ=;
+        fh=+F2y4GbSjfPRydDqrvlaSjS5uHn6Ho/wk+4Uo0Sd5io=;
+        b=Urx7mWQFNZwfhsxGZUdabTscbOp6C3CreNdAEWL7/dQh0LlZeWAaJDhkKt/cEL5KGt
+         2wScEjDmG93iPH263FA/aDB5/wDIM6sqftJnNA7OAhctA/YiAbKf6gQXHRRTiZJ38b1G
+         F6cxOHBdG2d30Tkcz5P1cLAUU9WdkCINwteT4WGlH/mZR3gt9RGfH2HQ607Fxvt+x+b7
+         RCTXrlAMfm12jniLTyqaSSkJFuBGNC0Q3/uqt4eizbF7rVnRNL6i1ppnrJI+bISxchTY
+         g5BThFxinUcbShM135LKZ0H+nfe0AkKfjBcqqnkrSPIXMCR97X29AAYtOuJ4MP5GsFye
+         KfRg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=RVZ9cIkt;
+       spf=pass (google.com: domain of 3t2y5zrckadibc-fsdzm-sjsbhgohuccuzsuccuzs.qca@rsvp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3T2Y5ZRcKADIbc-fSdZm-SjSbhgOhUccUZSUccUZS.Qca@rsvp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <3T2Y5ZRcKADIbc-fSdZm-SjSbhgOhUccUZSUccUZS.Qca@rsvp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id s23-20020a056808009700b003aa0bbe9e8esor7480452oic.14.2023.10.25.12.02.39
+        for <yash.yegare0810@gmail.com>
+        (Google Transport Security);
+        Wed, 25 Oct 2023 12:02:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3t2y5zrckadibc-fsdzm-sjsbhgohuccuzsuccuzs.qca@rsvp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=RVZ9cIkt;
+       spf=pass (google.com: domain of 3t2y5zrckadibc-fsdzm-sjsbhgohuccuzsuccuzs.qca@rsvp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3T2Y5ZRcKADIbc-fSdZm-SjSbhgOhUccUZSUccUZS.Qca@rsvp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1698260559; x=1698865359; dara=google.com;
+        h=to:from:subject:message-id:reply-to:date:mime-version:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=D/qdjVmgk7xZKRFrcVyIyoSYp30LlpXV9BqrJfzUsfQ=;
+        b=RVZ9cIkteNAQ/ikTkqlVXMnMRcJ6RPPn9Xc9ozz2DPiEkUjLY5kf7Ud9bBZ6YepD7a
+         4UhyRh3uL2Ks/2RXXjzNqYyaqgs0Kj/myESFoFgmtil8Nlv9lndfq7dLIVczSBBHrRMG
+         EHlB6wX1q9DArovJXvdm8O1o2jRpyBag3glEvqJH0U/JD62nBTivLmD8tBnL0nIM5GO4
+         Q8LvS3Slhu3t/IOuuLi0tzJ8fdjJOycQ8uC9RV26z5U454QkYAwBMh32AiIzpuVU9or8
+         PWEZApMRDSAJc6klsVmkRFLT49Zi2D1JjpCYdezaKnvy2mwwI6uQes2gz9bOnKaspL64
+         WtqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698260559; x=1698865359;
+        h=to:from:subject:message-id:reply-to:date:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=D/qdjVmgk7xZKRFrcVyIyoSYp30LlpXV9BqrJfzUsfQ=;
+        b=vv6de1aYYRZeqjd0Vuy2nTxCFCvIvi6CUM1B/nN424GsoKvoVyrNmOw/MDXF+Du8t2
+         OuzXxTJ90j+/prs+QxG1H2oj8euSh8kBbUiCYCDydpfrT4Fq+hWvNqp/gXoY+iILInbG
+         ZfwBjXFAdZmkCubdoEWpGK6+SGXlg/M8ljviGb7bF3quvrgUTin+IrsuWsi9fVi0aj/7
+         C/tBgJSKgmNSjIrsl0UlhMM1fHWRkvl61IfuXjq69H3XOOea0oId18t5q+yIj/ry4qOf
+         V/B5HbvPJPRH1XmbcIpi9PVI84BCDLiNGriaLUtE2upx9A+Mr87UpUFp3CA90jIEIbDg
+         E3zQ==
+X-Gm-Message-State: AOJu0YwjZLrPcZHOsvDys2OJUrNaStx+XAol4msh6YLT71TbY9SKl6pF
+	Nx6AbtZ4wWpAd3yVxpnvcUEnME6dE6e0Gg01b9IwWMKhsZpEwV2XqwPVm4sqgNeNo8UlvdAnend
+	VfvCIw9Wc+MvntBuS
+X-Google-Smtp-Source: AGHT+IEASRlUI7tvXfkWdeIkICG064WnCVNDBP+LHm2LoUm4jzh0LM2EHZuQpZhNruxBUIcR
+MIME-Version: 1.0
+X-Received: by 2002:a05:6808:217:b0:3ae:12f6:ac51 with SMTP id
+ l23-20020a056808021700b003ae12f6ac51mr17658126oie.41.1698260559365; Wed, 25
+ Oct 2023 12:02:39 -0700 (PDT)
+Date: Wed, 25 Oct 2023 12:02:39 -0700
+Reply-To: Google Events <cloud-hackathons@google.com>
+X-Notifications: 0e262f581a014e1980f475f7a8ae76ed
+X-Notifications-Bounce-Info: AaJ7rEraNdW1EfZEzXVDkjBoLbjvSLthFxh4lqd3zV1I-08f5UKlfyRPbjU3To3L0qhHQoZC2ER9thj3n7IgBbfW30LyvTL6cWn7vkWiXwGBc2gWKmxMHjcpRHT6eyJaQzT2IbBv0-lAqEQp8hUfvAJJw7ZksqGd1tJlzMJ-cGJSxyzMxeafIi1ZYeCJ5OtW6xrRv5558F4xQBSE63Tl86T9rnIGsDnapP34NjAwNjA0MDQxNTM1NTk2OTMzMg
+Message-ID: <rwl3yvmlO4KiiTXpf33c7A@notifications.google.com>
+Subject: [Register now] Tomorrow's Live event - Google Cloud Speaker Series
+From: Google Cloud Speaker Series <no-reply-eventsatgoogle@google.com>
+To: yash.yegare0810@gmail.com
+Content-Type: multipart/alternative; boundary="00000000000060ca5906088f1959"
+
+--00000000000060ca5906088f1959
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+R29vZ2xlDQoNCg0KDQpSZW1pbmRlciB0byBqb2luLg0KDQoNCg0KDQpIZWxsbyBZYXNoLA0KDQpK
+b2luIHVzIHRvbW9ycm93LCBUaHVyc2RheSwgMTAvMjYvMjMgQCAxOTowMCBFVCwgZm9yIGEgbGl2
+ZSBhbmQgaW50ZXJhY3RpdmUgIA0KZGlzY3Vzc2lvbiB3aXRoIEdvb2dsZSBDbG91ZCdzIERpcmVj
+dG9yIG9mIERldmVsb3BlciBBZG9wdGlvbi4NCg0KQXNrIG91ciBzcGVha2VyIHF1ZXN0aW9ucyB1
+c2luZyB0aGlzIGZvcm0gYW5kIFJTVlAgdG9kYXkhDQoNCkludGVyZXN0ZWQgaW4gc3RhcnRpbmcg
+eW91ciBhZHZlbnR1cmUgd2l0aCB0aGUgbmV3IFN0dWRlbnQgSW5ub3ZhdG9ycyAgDQpwcm9ncmFt
+PyBKb2luIHRoZSBEaXNjb3JkIHRvZGF5IGFuZCBpbnRyb2R1Y2UgeW91cnNlbGYgdG8geW91ciBu
+ZXcgIA0KY29tbXVuaXR5OiBnb28uZ2xlL3N0dWRlbnQtaW5ub3ZhdG9ycy1kaXNjb3JkLWhvdy10
+by4NCg0KRXZlbnQgZGF0ZTogVGh1cnNkYXksIDEwLzI2LzIzDQpUaW1lOiAxOTowMCBFRFQNCkxv
+Y2F0aW9uOiBWaXJ0dWFsIHdpdGggR29vZ2xlIE1lZXQ6IGdvby5nbGUvc3R1ZGVudC1pbm5vdmF0
+b3JzLWxpdmUNCg0KDQoNCg0KDQoNClJTVlANCg0KDQoNCg0KDQoNCkdvb2dsZQ0KDQrCqSAyMDIy
+IEdvb2dsZSBMTEMgMTYwMCBBbXBoaXRoZWF0cmUgUGFya3dheSwgTW91bnRhaW4gVmlldywgQ0Eg
+OTQwNDMNCg0KDQpUaGlzIGVtYWlsIGhhcyBiZWVuIHNlbnQgdG8geWFzaC55ZWdhcmUwODEwQGdt
+YWlsLmNvbS4gSWYgeW91IG5vIGxvbmdlciAgDQp3aXNoIHRvIHJlY2VpdmUgZW1haWxzIGFib3V0
+IHRoaXMgZXZlbnQsIHBsZWFzZSB1bnN1YnNjcmliZSBoZXJlLg0KDQoNCg0KDQoNCg0KDQo=
+--00000000000060ca5906088f1959
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+		<html xmlns=3Dhttp://www.w3.org/1999/xhtml>
+			<head>
+				<meta charset=3Dutf-8>
+				<meta http-equiv=3DContent-Type content=3D"text/html; charset=3Dutf-8">
+				<!--[if !mso]><!-->
+					<meta http-equiv=3DX-UA-Compatible content=3DIE=3Dedge>
+				<!--<![endif]-->
+				<meta name=3Dviewport content=3D"width=3Ddevice-width, initial-scale=3D=
+1.0">
+				<meta name=3Drobots content=3D"no index">
+				<!--[if mso | ie]>
+					<style>
+						.sup {
+							vertical-align: 1px !important;
+							font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 100% !=
+important;
+						}
+						.pd2 {
+							padding-top: 0 !important;
+						}
+						</style>
+					<![endif]-->
+					<!--[if ie]>
+						<style>
+							.sup {
+								vertical-align: 6px !important;
+								font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 80% !=
+important;
+							}
+					</style>
+				<![endif]-->
+				<style>
+					html {
+						-webkit-text-size-adjust: none;
+						-ms-text-size-adjust: 100%;
+					}
+					body {
+						font-family: Roboto, Arial, Helvetica, sans-serif;
+						font-size: 15px;
+						color: #000;
+						-webkit-text-size-adjust: none !important;
+						-webkit-font-smoothing: antialiased !important;
+						-ms-text-size-adjust: none !important;
+					}
+					table, tr, td {
+						mso-table-lspace: 0pt;
+						mso-table-rspace: 0pt;
+					}
+					a:link, a:visited, a:hover, a:active {
+						color: #4285f4;
+						text-decoration: none;
+					}
+					.appleLinks a {
+						color: #000 !important;
+						text-decoration: none !important;
+					}
+					strong {
+						font-weight: bold !important;
+					}
+					em {
+						font-style: italic !important;
+					}
+					.yshortcuts a span {
+						color: inherit !important;
+						border-bottom: none !important;
+					}
+					.ReadMsgbody1 {
+						width: 100%;
+					}
+					.ExternalClass {
+						width: 100%;
+					}
+					.ExternalClass * {
+						line-height: 100%
+					}
+					td {
+						-webkit-text-size-adjust: none;
+					}
+					a[href^=3Dtel] {
+						color: inherit;
+						text-decoration: none;
+					}
+					.mob-hide {
+						display: none !important;
+					}
+					div, p, a, li, td {
+						-webkit-text-size-adjust: none;
+					}
+					td {
+						text-decoration: none !important;
+					}
+					a[x-apple-data-detectors] {
+						color: inherit !important;
+						text-decoration: none !important;
+						font-size: inherit !important;
+						font-family: inherit !important;
+						font-weight: inherit !important;
+						line-height: inherit !important;
+					}
+					@media screen and (max-width: 480px) {
+						.pd {
+							padding-left: 20px !important;
+							padding-right: 20px !important;
+						}
+					}
+				</style>
+			</head>
+			<body style=3D"margin: 10 !important; padding: 0 0 0 0 !important; backg=
+round-color: #f2f2f2;"><img src=3D"https://notifications.googleapis.com/ema=
+il/t/AFG8qyWLIjUF79WWlVKFZXQhoOi9S7j5n5IvpCQKIhvvOVkrn6vXTAQpGSz_u7xW33E2LP=
+k_SjshjeSqskpioiXB-XfDBdSmSYVtB5CApxe8BG0QJKL02dvcy6HlPZ31N-PIqIaKhbBeZcnij=
+MZ2wWjHSUXlf8AsWZmPonTHI0peqxkbvaD3KvT_OQTATWKzrW_LYqd4ENEzD7Lv0oJ0Kf4itlVL=
+frJVaIYmn2s9LmFHioKsaHc-uQ9Y73uQpgz7pDPQMyXCVUHWkq8egBk0hd198odaQ5QP0PLryZR=
+xX9u1luf-uFJjO7KWngk/a.gif" width=3D1 height=3D1>
+<!-- [if (gte mso 9)|(IE)]>
+					<table align=3D"center" width=3D"480" cellspacing=3D"0" cellpadding=3D=
+"0">
+						<tr>
+							<td>
+				<![endif]-->
+<p>&nbsp;</p>
+<table style=3D"max-width: 600px; width: 100%; margin: 0 auto; text-align: =
+center;" border=3D0 width=3D480 cellspacing=3D0 cellpadding=3D0>
+<tbody>
+<tr>
+<td style=3D"padding-top: 10;" align=3Dcenter valign=3Dtop>
+<table>
+<tbody>
+<tr>
+<td style=3D"padding: 0 30px 0 30px;" align=3Dcenter valign=3Dtop>
+<table border=3D0 width=3D100% cellspacing=3D0 cellpadding=3D0>
+<tbody>
+<tr>
+<td style=3D"font-family: Roboto, Helvetica, Arial sans-serif; font-size: 1=
+2px; line-height: 22px; color: #5f6368; letter-spacing: 0.25px; padding-bot=
+tom: 20px;" align=3Dcenter valign=3Dtop>
+<p></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table id=3DtemplateColumns style=3D"height: 44px;" border=3D0 width=3D100%=
+ cellspacing=3D10 cellpadding=3D10>
+<tbody>
+<tr style=3D"height: 44px;">
+<td class=3DtemplateColumnContainer style=3D"height: 44px;" align=3Dcenter =
+valign=3Dtop width=3D50%>
+<table border=3D0 width=3D100% cellspacing=3D0 cellpadding=3D0>
+<tbody>
+<tr>
+<td class=3DleftColumnContent><img class=3DcolumnImage style=3D"height: 21p=
+x; outline: none; text-decoration: none;" src=3Dhttps://services.google.com=
+/fh/files/events/googlecloudfullcolor2900x512.png alt=3DGoogle width=3D121 =
+height=3Dauto></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td class=3DtemplateColumnContainer style=3D"height: 44px;" align=3Dcenter =
+valign=3Dmiddle width=3D50%>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table style=3D"width: 99.6656%; height: 300px;">
+<tbody>
+<tr style=3D"height: 5px;">
+<td style=3D"border-radius: 0px; border: 1px solid #efefef; width: 96.579%;=
+ height: 180px;" align=3Dcenter valign=3Dtop bgcolor=3D#ffffff>
+<table style=3D"height: 183px; width: 100%;" border=3D0 width=3D100% cellsp=
+acing=3D0 cellpadding=3D"0px 40px">
+<tbody>
+<tr style=3D"height: 10px;">
+<td style=3D"font-family: 'Google Sans', Roboto, Helvetica, 'Arial sans-ser=
+if'; font-size: 28px; font-weight: 500; line-height: 10px; color: #4285f4; =
+padding: 0px 40px; letter-spacing: -0.31px; text-align: left; width: 100%; =
+height: 27px;">&nbsp;</td>
+</tr>
+<tr style=3D"height: 60px;">
+<td style=3D"font-family: 'Google Sans', Roboto, Helvetica, 'Arial sans-ser=
+if'; font-size: 24px; font-weight: 500; line-height: 36px; color: #4285f4; =
+padding: 0px 40px; letter-spacing: -0.31px; text-align: left; height: 68px;=
+ width: 100%;" align=3Dleft valign=3Dcenter>
+<table style=3D"letter-spacing: -0.31px; border-collapse: collapse; width: =
+107.143%; height: 10px;">
+<tbody>
+<tr style=3D"height: 0px;">
+<td style=3D"width: 44.0477%; height: 10px;">Reminder to join.</td>
+<td style=3D"width: 55.9523%; height: 10px; text-align: center;"><img src=
+=3Dhttps://services.google.com/fh/files/events/si_blue_cap_logo_101723.png =
+alt=3D"" width=3D143 height=3D138></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr style=3D"height: 80px;">
+<td style=3D"font-family: Roboto, Helvetica, 'Arial sans-serif'; font-size:=
+ 14px; line-height: 24px; color: #414347; padding: 20px 40px; height: 10px;=
+ width: 100%;" align=3Dleft valign=3Dtop>
+<p>Hello Yash,</p>
+<p><strong>Join us tomorrow,</strong> Thursday, 10/26/23 @ 19:00 ET,&nbsp; =
+for a live and interactive discussion with Google Cloud's Director of Devel=
+oper Adoption.</p>
+<p><strong>Ask our speaker questions using <a href=3D"https://notifications=
+.googleapis.com/email/redirect?t=3DAFG8qyXvw6aUqfmZsN-DJ37I6IgCOxhTaTU-gxej=
+BT_kWLH5yNBlIF8kwchI-spqW0LCxHMCuh1TxNp9As-6SWbG4ZsoDtwKKD1F--i4vHtSWHLlFFK=
+9nlrLxH_aAG3hNVecDkAd2TUdWXgBSURn8g-8z1tIClDz5uyCAEEwoGDCdvvHBAltutkhO6SYdf=
+OiTsR7xAJhN6QyRiuZoJB5B9kTcgRAWHcw7FYPoz-HBJT1FhY6Ho3qSCnnwBH-cZUkbv9satIti=
+A&amp;r=3DeJzLKCkpKLbS10_JTy7WS8_PT89J1UvOz9VPyy_KLdZP0U_VN3Rz9CwI9AlOKwj2r=
+cxKDHJ1dUsxCTKq8DFwdk0szjGvSk_OcjTQzXFyLk1ztQyr9PUv8QgxTyrXL8tMLQcZAwC0BCJE=
+&amp;s=3DALHZ2r76FxcPhAY2h9BqeqIv7IMx" target=3D_blank rel=3Dnoopener>this<=
+/a> form and RSVP today!</strong></p>
+<p>Interested in starting your adventure with the new Student Innovators pr=
+ogram? <strong>Join the Discord today</strong> and introduce yourself to yo=
+ur new community: <a href=3D"https://notifications.googleapis.com/email/red=
+irect?t=3DAFG8qyUF9to6IVn43CgBzxLs-gz6k3azCCS1AeWN0e1-e7zJ5Be3s84aP_TC4xFx0=
+Psju7_jkc3Jo9cqT2ilkqZM9CKiJTCrMQa42SFiLQxCHByFonm490lkzhdaRlOo-C6-4ycxsFVP=
+MbnU3GPfpXJXI4mwerIY4rlwS82Lwa4_Y0H5AuIrsPLFuSaXMcTumvu_OePM0T9LNCUv06rZVDR=
+LzqXB2BeP_MUj96Hb6n8aLcaXl_h_yy-Bslhq8KVe6fPIUF9eEQ&amp;r=3DeJwFwVEOABEMBcA=
+TVf_3NqKCRPpE33J9M51c8ak2ILVZNfhbdcpwx8nEDrERBduk4wrxANDXEs0&amp;s=3DALHZ2r=
+750UsFXxZFbZRRNAIyNthj" target=3D_blank rel=3Dnoopener>goo.gle/student-inno=
+vators-discord-how-to</a>.</p>
+<p><strong>Event date:</strong> Thursday, 10/26/23<br><strong>Time:</strong=
+> 19:00 EDT<br><strong>Location:</strong> Virtual with Google Meet: <a href=
+=3D"https://notifications.googleapis.com/email/redirect?t=3DAFG8qyXcgQ40QNd=
+Y_rkyckp1nXsvbrKrVJ6fQuUrsytVdFWfS2s13JvEWtbQ4LTAfn8NgBzoLOp5snb3cBXq0VOX6g=
+JGZa2KdzVOC6XG-c37T8y2iKVQ4SH8EyqEO38F7KxaAwtVGSHljJYhnlJLxk1R7MXCo0ymDKbuS=
+duL6lPCAyCUGXP4uMbDgTAPr1_3jnODWRkQEmTOSRjZ_m_wXZfv4EHffAJdY193xpnRuOWmKdwd=
+sYLS125rzmyXHcSDBkf0xT6mCQ&amp;r=3DeJzLKCkpKLbS10_Pz9dLz0nVLy4pTUnNK9HNzMvL=
+L0ssyS8q1s3JLEsFACYVDwo&amp;s=3DALHZ2r5crWRnHZqV99ZZ9i5609ru" target=3D_bla=
+nk rel=3Dnoopener>goo.gle/student-innovators-live</a></p>
+</td>
+</tr>
+<tr style=3D"height: 78px;">
+<td style=3D"padding: 0px; height: 78px;" align=3Dcenter valign=3Dtop>
+<table style=3D"height: 54px;" border=3D0 width=3D100% cellspacing=3D0 cell=
+padding=3D0>
+<tbody>
+<tr style=3D"height: 37px;">
+<td style=3D"height: 37px;">
+<table border=3D0 cellspacing=3D0 cellpadding=3D0 align=3Dcenter>
+<tbody>
+<tr>
+<td style=3D"border-radius: 3px;" align=3Dcenter bgcolor=3D#4285f4><a style=
+=3D"font-size: 16px; font-family: Google Sans, Roboto, Helvetica, Arial, sa=
+ns-serif; font-weight: 500; letter-spacing: -0.31px; color: #ffffff; text-d=
+ecoration: none; border-radius: 3px; padding: 11px 19px 11px 19px; border: =
+1px solid #4285f4; display: inline-block;" href=3D"https://notifications.go=
+ogleapis.com/email/redirect?t=3DAFG8qyVCxMo2-DxdbvWwiit7HaUE-tsjUZCE8zmz6SN=
+i1XmtjVDFiUFGfxT6xbVbL22ut7YWdINAAG_ctkl73GdXysoyHRbCnAyfHjT9Dvn96YO-ip1KZA=
+gxYZZL7C0Pf95ky5Gn9xgxMvlcOFhxAK1I7RlayEtmZu5oQJcOL4bNbtRk_FFEuxmcyUw_uKh8S=
+kxP81E1B1DUQ2IMEzEtx1TUpyUIkjuinnB70ZPVEkVQTDib7Ua0iEo_eKV-4rAHvn1SipdoMg&a=
+mp;r=3DeJwFwcENwCAMA8CJ0vy7DVItQK0SFJvOz92QFm_3nnn1D07tByGbEfk3ZdG40F6UETXB=
+A9GvEv0&amp;s=3DALHZ2r7VgBLoseRF3qCbS7pQ9gK9" target=3D_blank rel=3Dnoopene=
+r>RSVP</a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr style=3D"height: 17px;">
+<td style=3D"height: 17px;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr style=3D"height: 207px;">
+<td style=3D"padding-top: 0px; padding-right: 30px; padding-bottom: 30px; w=
+idth: 96.579%; height: 207px;" align=3Dcenter valign=3Dtop>
+<table style=3D"height: 108px;" border=3D0 width=3D100% cellspacing=3D0 cel=
+lpadding=3D0>
+<tbody>
+<tr style=3D"height: 27px;">
+<td style=3D"padding-top: 40px; padding-bottom: 23px; height: 27px;" align=
+=3Dcenter valign=3Dtop><img style=3D"display: block; margin-left: auto; mar=
+gin-right: auto;" title=3DGoogle src=3Dhttp://www.gstatic.com/news/images/g=
+oogle_logo_day_dream.png alt=3DGoogle width=3D86></td>
+</tr>
+<tr style=3D"height: 21px;">
+<td style=3D"font-family: Roboto, Helvetica, 'Arial sans-serif'; font-size:=
+ 14px; line-height: 22px; color: #5f6368; letter-spacing: 0.25px; padding-b=
+ottom: 25px; height: 21px;" align=3Dcenter valign=3Dtop><a style=3D"color: =
+#5f6368; text-decoration: none;" href=3D"https://notifications.googleapis.c=
+om/email/redirect?t=3DAFG8qyUTlrKiE1Ta56V8tt7y8NbTth6-hK0Mw2aTVsy9nzCNk9j6G=
+iw78jhsiAYZjImR9dm5DN6o1dEmjwOP0JR9PPya2upddCLZRwEvkh_tjWXTxkjUmT9TcC7vuv_y=
+gsnAoOUXYAjZD4NI4ZrU_C3Wknfk0rUQJZwGELiyauuTlB2JAgnzhl-JV8xzfcjeegWpP5NaXYY=
+OeJYEmpN1jSup9rwJIvjhVeGyuN8j14IJ79m4r8OOo_-gqU8y7aJ4cGJkE6071Q&amp;r=3DeJx=
+TBgAAJAAk&amp;s=3DALHZ2r60CDqezuoEPd5AhXkd87Lx">&copy; 2022 Google LLC 1600=
+ Amphitheatre Parkway, Mountain View, CA 94043</a></td>
+</tr>
+<tr style=3D"height: 60px;">
+<td style=3D"font-family: Roboto, Helvetica, 'Arial sans-serif'; font-size:=
+ 14px; line-height: 22px; color: #5f6368; letter-spacing: 0.25px; padding-b=
+ottom: 20px; height: 60px;" align=3Dcenter valign=3Dtop>
+<p>This email has been sent to yash.yegare0810@gmail.com. If you no longer =
+wish to receive emails about this event, please <a href=3D"https://notifica=
+tions.googleapis.com/email/redirect?t=3DAFG8qyXsUpT__IUdhKvOL0sL-o60ej0vdM5=
+xI7mYldLbSFc7jsg9e0zITz-669cMC7iuChhzw8YDUFzvMEqfw99mCpHXGKSXULpSK1wKPOPnV6=
+1J6MTsCwkuZwOPohsSJjUXExnrQdTe8tLXxhV02tfEYpttcam31xfGxUN1cMeOiHuXS0vIcWuKl=
+HaRdruKS564WY81opYqnglH0flMbgc75sLh-hG8KH5nTMhVoxIlVqxECMotnUesls6_PyNeE-tX=
+8KbUSQ&amp;r=3DeJwlyEkOgzAMAMDf9AZxWLJUQrzFBBuiAkFxQr_fQ-c4eym3vJXK8tztN5Z9=
+S2k7qA3pVPTQVUT9pwlHqmsjN-GHciOUI4nilE9R9ZK6SMhxoXmrJGXSgGFhhxCQB8PWW809ABv=
+sfceeX3RiPCagznQ8Oo2gB9LeAQ92ZIsOyRpaf_q3NeE&amp;s=3DALHZ2r6xQPGUR9lDhBkYo-=
+t22Zjs">unsubscribe here</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td style=3D"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt; mso-line-height-rule: exactly; line-height: 15px;" align=3Dleft =
+valign=3Dtop height=3D15><!-- [if gte mso 15]>&nbsp;<![endif]--></td>
+</tr>
+</tbody>
+</table>
+<!-- [if (gte mso 9)|(IE)]>
+							</td>
+						</tr>
+					</table>
+				<![endif]-->
+<p>&nbsp;</p>
+</body>
+		</html>
+--00000000000060ca5906088f1959--
