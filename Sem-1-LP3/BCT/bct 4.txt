@@ -1,0 +1,42 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract StudentData {
+    struct Student {
+        uint256 id;
+        string name;
+        uint256 age;
+    }
+
+    // Array to store multiple student records
+    Student[] public students;
+    // fallback() external payable { 
+    //     emit Received(msg.sender, msg.value);
+    // }
+    // Fallback function to receive Ether
+    receive() external payable {
+        // Log the sender's address and the amount received
+         emit Received(msg.sender, msg.value);
+    }
+
+    // Event emitted when Ether is received
+    event Received(address indexed sender, uint256 amount);
+
+    // Function to add a new student
+    function addStudent(uint256 _id, string memory _name, uint256 _age) public {
+        Student memory newStudent = Student(_id, _name, _age);
+        students.push(newStudent);
+    }
+
+    // Function to get the total number of students
+    function getStudentCount() public view returns (uint256) {
+        return students.length;
+    }
+
+    // Function to get details of a specific student by index
+    function getStudent(uint256 index) public view returns (uint256, string memory, uint256) {
+        require(index < students.length, "Index out of bounds");
+        Student memory student = students[index];
+        return (student.id, student.name, student.age);
+    }
+}
